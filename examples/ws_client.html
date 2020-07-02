@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebSocket Client</title>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+
+        html {
+          padding: 0;
+        }
+
+        body {
+          text-align: center;
+          padding: 30px;
+        }
+
+        button,
+        input[type=button],
+        input[type=submit] {
+          cursor: pointer;
+        }
+
+        button:active,
+        input[type=button]:active,
+        input[type=submit]:active {
+          opacity: 0.8;
+        }
+
+        button:disabled,
+        input[type=button]:disabled,
+        input[type=submit]:disabled {
+          opacity: 0.4;
+          cursor: default;
+        }
+
+        .hidden {
+          display: none !important;
+        }
+
+        .connect-button {
+          color: white;
+          font-size: 20px;
+          padding: 10px 30px;
+          background: rgb(0, 119, 255);
+          border: 0;
+          border-radius: 100px;
+          outline: 0;
+        }
+
+        .message-box {
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .message-box input[type=text] {
+          height: 40px;
+          line-height: 38px;
+          padding: 0 15px;
+          margin-right: 15px;
+          border: 1px solid #ddd;
+        }
+
+        .message-box input[type=button] {
+          height: 40px;
+          line-height: 38px;
+          color: white;
+          font-size: 16px;
+          padding: 0 15px;
+          background: rgb(101, 5, 146);
+          border: 1px solid rgb(101, 5, 146);
+          outline: 0;
+        }
+    </style>
+  </head>
+
+  <body>
+    <button type="button" class="connect-button" id="connect" onclick="connect()">Connect</button>
+
+    <div id="message-box" class="message-box hidden">
+      <input id="message" type="text">
+      <input id="send-message" type="button" value="Send" onclick="sendMessage()">
+    </div>
+
+    <script>
+      var socket;
+      var connectButton = document.getElementById('connect');
+      var messageBox = document.getElementById('message-box');
+      var messageInput = document.getElementById('message');
+      var sendMessageButton = document.getElementById("send-message");
+
+      function connect() {
+        connectButton.disabled = true;
+
+        socket = new WebSocket('ws://localhost:8080');
+        socket.addEventListener('open', function(event) {
+          connectButton.disabled = false;
+          connectButton.classList.add('hidden');
+          messageBox.classList.remove('hidden');
+        });
+        socket.addEventListener('error', function(event) {
+          alert('Could not connect to the server');
+          connectButton.disabled = false;
+        });
+        socket.addEventListener('message', function(event) {
+          alert('Message from server: ' + event.data);
+        });
+      }
+
+      function sendMessage() {
+        var message = messageInput.value;
+        messageInput.value = '';
+        socket.send(message);
+      }
+    </script>
+  </body>
+</html>
