@@ -1,10 +1,10 @@
-project(ws)
+project(wesley)
 
 cmake_minimum_required(VERSION 3.0)
 
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
-add_library(ws STATIC
+add_library(wesley STATIC
     src/ws.c
     src/ws.h
     src/ws_base64.c
@@ -21,13 +21,13 @@ add_library(ws STATIC
 )
 
 if(WIN32)
-  target_link_libraries(ws ws2_32)
+  target_link_libraries(wesley ws2_32)
 endif()
 
 include_directories(src)
 
-add_executable(ws_server examples/ws_server.c)
-target_link_libraries(ws_server ws)
+add_executable(example_server examples/server.c)
+target_link_libraries(example_server wesley)
 
-add_executable(ws_client examples/ws_client.c)
-target_link_libraries(ws_client ws)
+add_executable(example_client examples/client.c)
+target_link_libraries(example_client wesley)
