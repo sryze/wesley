@@ -1,6 +1,8 @@
 wesley
 ======
 
+[![Build Status](https://travis-ci.org/sryze/ehlo.svg?branch=master)](https://travis-ci.org/sryze/ehlo)
+
 This library is a simple implementation of
 [the WebSocket protocol](https://tools.ietf.org/html/rfc6455) in C.
 
