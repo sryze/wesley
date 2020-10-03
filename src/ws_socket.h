@@ -12,8 +12,10 @@
   #define SHUT_RDWR SD_BOTH
   #define ws_close_socket closesocket
 #else
-  #include <arpa/inet.h>
+  #include <sys/types.h>
   #include <sys/socket.h>
+  #include <arpa/inet.h>
+  #include <netinet/in.h>
   #include <netdb.h>
   #include <unistd.h>
   typedef int ws_socket_t;
