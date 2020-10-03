@@ -9,8 +9,8 @@ This library is a simple implementation of
 Examples
 --------
 
-* [Server](examples/ws_server.c)
-* [Client](examples/ws_client.c)
+* [Server](examples/server.c)
+* [Client](examples/client.c)
 
 TODO
 ----
