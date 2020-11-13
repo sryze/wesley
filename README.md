@@ -1,7 +1,7 @@
 wesley
 ======
 
-[![Build Status](https://travis-ci.org/sryze/wesley.svg?branch=master)](https://travis-ci.org/sryze/wesley)
+[![Build Status][build_status]][build]
 
 This library is a simple implementation of
 [the WebSocket protocol](https://tools.ietf.org/html/rfc6455) in C.
@@ -16,3 +16,6 @@ TODO
 ----
 
 * Secure WebSockets (SSL)
+
+[build]: https://travis-ci.org/sryze/wesley
+[build_status]: https://travis-ci.org/sryze/wesley.svg?branch=master
