@@ -1,4 +1,4 @@
-/* This example is a simple echo server */
+/* Simple WebSocket echo server */
 
 #include <assert.h>
 #include <stdbool.h>
@@ -120,7 +120,7 @@ int main(int argc, char **argv)
 
 #ifdef _WIN32
   WSADATA wsa_data;
-  DWORD result = WSAStartup(MAKEWORD(2,2), &wsa_data);
+  DWORD result = WSAStartup(MAKEWORD(2, 2), &wsa_data);
   if (result != 0) {
     printf("WSAStartup failed: %d\n", result);
     return 1;
