@@ -6,4 +6,5 @@
 .idea
 .vs
 .vscode
-/build
+build
+out
