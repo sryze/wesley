@@ -1,6 +1,6 @@
-project(wesley)
-
 cmake_minimum_required(VERSION 3.0)
+
+project(wesley)
 
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
